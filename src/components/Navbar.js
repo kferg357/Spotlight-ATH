@@ -14,7 +14,7 @@ const Navbar = () => {
             <Link to="/" className="navbar-logo">
                 SPOTLIGHT ATHLETES 
                 
-                    <img src= "./images/basketball-net.jpg" alt="" />    
+                    {/* <img src= "./images/basketball-net.jpg" alt="" />     */}
             </Link>
             <ul className="nav-items">
                 {navItems.map((item) => {

@@ -87,3 +87,10 @@ button:active {
   min-width: 370px;
   color: #f80759;
 }
+
+.picture {
+justify-content: center;
+height: 1500px;
+align-items: center;
+display: flex;
+}
