@@ -1,0 +1,14 @@
+{
+    "version": "0.6.0",
+    "license": "MIT",
+    "dependencies": {
+      "express": "^3.21.2",
+      "nodemon": "^1.19.1"
+    },
+    "engines": {
+      "node": ">=4.2"
+    },
+    "scripts": {
+      "start": "node server.js"
+    }
+  }
