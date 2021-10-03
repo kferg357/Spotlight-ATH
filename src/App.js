@@ -9,6 +9,7 @@ import Register from './pages'
 import SignupForm from './components/SignupForm';
 import Login from './components/Login';
 import SearchBar from './components/SearchBar';
+import playerProfile from './components/playerProfile';
 
 
 
@@ -26,6 +27,7 @@ const App = () => {
       <Route path="/login" component={Login} /> 
       {/* <Route path="" component={Login} />  */}
       <Route path="/SearchBar" component={SearchBar} />
+      <Route path="/playerProfile" component={playerProfile} />
         
       {/* </Route> */}
     </Switch>

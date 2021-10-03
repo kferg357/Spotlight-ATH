@@ -16,13 +16,21 @@ export const navItems = [
         title: "Login",
         path:"./login",
         cName: "nav-item",
-    },
+    }, 
     {
         id: 4,
+        title: "Player Profile",
+        path: "./playerProfile",
+        cName: "nav-item",
+    },
+    {
+        id: 5,
         title: "Search",
         path: "./Searchbar",
         cName: "nav-item",
     }
+   
+
 ];
 
 // export const serviceDropdown = [
