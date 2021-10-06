@@ -8,4 +8,4 @@ const playerProfile = () => {
     )
 }
 
-export default playerProfile
+export default 
