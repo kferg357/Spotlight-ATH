@@ -4,8 +4,8 @@ import Form from "./components/form";
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages'
-import Register from './pages'
+import Home from './pages/home'
+import Register from './pages/home'
 import SignupForm from './components/SignupForm';
 import Login from './components/Login';
 import SearchBar from './components/SearchBar';

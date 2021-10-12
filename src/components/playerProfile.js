@@ -1,6 +1,7 @@
 // import React from 'react';
 import React, { useState, useEffect } from "react";
 import validation from "./validation";
+import { BrowserRouter } from 'react-router-dom';
 
 const PlayerProfile = ({ submitForm }) => {
   const [values, setValues] = useState({
@@ -175,11 +176,11 @@ const PlayerProfile = ({ submitForm }) => {
             <label className="label">Coaches Email Address</label>
             <input
               className="input"
-              type="text"
+              type="email"
               name="coaches email"
               value={values.coachesemailaddress}
               onChange={handleChange}
-              placeholder="xxxx@email.com"
+              placeholder="Email"
             />
             {errors.coachesemailaddress && (
               <p className="error">{errors.coachesemailaddress}</p>
@@ -289,6 +290,8 @@ const PlayerProfile = ({ submitForm }) => {
         </form>
       </div>
     </div>
+
+
   );
 };
 
