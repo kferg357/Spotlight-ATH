@@ -1,28 +1,7 @@
-// import React, { useState } from 'react'
-// import SignupForm from './SignupForm';
-// import SignupFormSucess from './SignupFormSucess';
-
-// const Login = () => {
-//     const [formIsSubmitted, setFormIsSubmitted] = useState(false);
-
-//     const submitForm = () => {
-//         setFormIsSubmitted(true);
-//     }
-//     return <div>{!formIsSubmitted ? <SignupForm submitForm={submitForm} /> : <SignupFormSucess />}</div>
-// };
-
-// export default Login;
-
-
-
-
 
 import React, { useState, useEffect } from 'react';
 import validation from './validation';
 import { useAuth0 } from '@auth0/auth0-react';
-
-
-
 
 const Login = ({ submitForm }) => {
     const  [values, setValues] = useState({
@@ -30,8 +9,6 @@ const Login = ({ submitForm }) => {
         email:"",
         password: "",
     });
-
-
 
     const [errors, setErrors] = useState({});
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
@@ -61,6 +38,8 @@ const Login = ({ submitForm }) => {
             console.log(responseData); 
             if(!responseData.hadError){
                 window.location = '/PlayerProfile';
+            } else {
+                alert('password is incorrect')
             }
         
         
@@ -81,6 +60,8 @@ const Login = ({ submitForm }) => {
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
             submitForm(true);
         }
+
+        
     }, [errors]);
         
     return (

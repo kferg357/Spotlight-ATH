@@ -20,6 +20,8 @@ const PlayerProfile = ({ submitForm }) => {
   };
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    // const firstName = document.getElementById("txt-firstName").value;
+    //    const lastName = document.getElementById("txt-lastName").value;
     setErrors(validation(values));
     setDataIsCorrect(true);
   };
