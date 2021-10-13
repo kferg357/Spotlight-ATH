@@ -23,12 +23,15 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 
 
+
 const Login = ({ submitForm }) => {
     const  [values, setValues] = useState({
         fullname: "",
         email:"",
         password: "",
     });
+
+
 
     const [errors, setErrors] = useState({});
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
@@ -39,10 +42,40 @@ const Login = ({ submitForm }) => {
         })
     }
     const handleFormSubmit = (event) =>{
-        event.preventDefault();
-        setErrors(validation(values));
-        setDataIsCorrect(true);
-    };
+      event.preventDefault();
+       const username = document.getElementById("txt-fullname").value;
+       const password = document.getElementById("txt-password").value;
+        const requestUrl = "http://localhost:4000/login/?username="+username+"&password="+password;
+
+        fetch(requestUrl, {
+            method: 'GET',
+            headers: {
+            "Accept": "application/json",
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(response => { return response.json();})
+        .then(responseData => {
+            
+            
+            console.log(responseData); 
+            if(!responseData.hadError){
+                window.location = '/PlayerProfile';
+            }
+        
+        
+        
+        })
+
+
+
+
+        .then(data => {this.setState({"questions" : data});})
+    
+        .catch(err => {
+            console.log("fetch error" + err);
+        });
+    }
     
     useEffect(() => {
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
@@ -62,7 +95,8 @@ const Login = ({ submitForm }) => {
                         <input className="input" 
                         type="text" 
                         name="fullname" 
-                        value={values.fullname} 
+                        id = "txt-fullname"
+                        value={values.fullname}
                         onChange={handleChange}
                         />
                         {errors.fullname && <p className="error">{errors.fullname}</p>}
@@ -72,6 +106,7 @@ const Login = ({ submitForm }) => {
                         <input className="input" 
                         type="email"  
                         name="email" 
+                        id = "txt-email"
                         value={values.email}
                         onChange={handleChange}
                         />
@@ -82,6 +117,7 @@ const Login = ({ submitForm }) => {
                         <input className="input" 
                         type="password" 
                         name="password" 
+                        id = "txt-password"
                         value={values.password}
                         onChange={handleChange}
                         />
