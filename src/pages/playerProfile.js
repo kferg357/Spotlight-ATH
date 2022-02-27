@@ -1,6 +1,7 @@
 import React from 'react'
+import PlayerProfile from '../components/playerProfile'
 
-const playerProfile = () => {
+const PlayerProfile = () => {
     return (
         <div>
             <h1>Ath</h1>
@@ -8,4 +9,4 @@ const playerProfile = () => {
     )
 }
 
-export default playerProfile
+export default PlayerProfile;

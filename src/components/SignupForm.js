@@ -1,6 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import validation from './validation';
 
+import axios, { Axios } from 'axios';
+
+function App() {
+    const [fullnameReg, setFullnameReg] = useState("");
+    const [passwordReg, setPasswordReg] = useState("");
+
+const register = () => {
+    Axios.post('http://localhost3001/register', {
+        fullname: fullnameReg, 
+        password: passwordReg
+    }).then((response) => {
+        console.log(response);
+    });
+}
+};
+
 const SignupForm = ({ submitForm }) => {
     const  [values, setValues] = useState({
         fullname: "",

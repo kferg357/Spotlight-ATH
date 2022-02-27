@@ -1,23 +1,7 @@
-// import React, { useState } from 'react'
-// import SignupForm from './SignupForm';
-// import SignupFormSucess from './SignupFormSucess';
-
-// const Login = () => {
-//     const [formIsSubmitted, setFormIsSubmitted] = useState(false);
-
-//     const submitForm = () => {
-//         setFormIsSubmitted(true);
-//     }
-//     return <div>{!formIsSubmitted ? <SignupForm submitForm={submitForm} /> : <SignupFormSucess />}</div>
-// };
-
-// export default Login;
-
-
-
 
 import React, { useState, useEffect } from 'react';
 import validation from './validation';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Login = ({ submitForm }) => {
     const  [values, setValues] = useState({
@@ -35,15 +19,49 @@ const Login = ({ submitForm }) => {
         })
     }
     const handleFormSubmit = (event) =>{
-        event.preventDefault();
-        setErrors(validation(values));
-        setDataIsCorrect(true);
-    };
+      event.preventDefault();
+       const username = document.getElementById("txt-fullname").value;
+       const password = document.getElementById("txt-password").value;
+        const requestUrl = "http://localhost:4000/login/?username="+username+"&password="+password;
+
+        fetch(requestUrl, {
+            method: 'GET',
+            headers: {
+            "Accept": "application/json",
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(response => { return response.json();})
+        .then(responseData => {
+            
+            
+            console.log(responseData); 
+            if(!responseData.hadError){
+                window.location = '/PlayerProfile';
+            } else {
+                alert('password is incorrect')
+            }
+        
+        
+        
+        })
+
+
+
+
+        .then(data => {this.setState({"questions" : data});})
+    
+        .catch(err => {
+            console.log("fetch error" + err);
+        });
+    }
     
     useEffect(() => {
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
             submitForm(true);
         }
+
+        
     }, [errors]);
         
     return (
@@ -58,7 +76,8 @@ const Login = ({ submitForm }) => {
                         <input className="input" 
                         type="text" 
                         name="fullname" 
-                        value={values.fullname} 
+                        id = "txt-fullname"
+                        value={values.fullname}
                         onChange={handleChange}
                         />
                         {errors.fullname && <p className="error">{errors.fullname}</p>}
@@ -68,6 +87,7 @@ const Login = ({ submitForm }) => {
                         <input className="input" 
                         type="email"  
                         name="email" 
+                        id = "txt-email"
                         value={values.email}
                         onChange={handleChange}
                         />
@@ -78,6 +98,7 @@ const Login = ({ submitForm }) => {
                         <input className="input" 
                         type="password" 
                         name="password" 
+                        id = "txt-password"
                         value={values.password}
                         onChange={handleChange}
                         />
@@ -85,8 +106,8 @@ const Login = ({ submitForm }) => {
                     </div>
                     <div>
                         <button className="submit" onClick={handleFormSubmit}>
-                           Log In
-                            </button>
+                            Log In
+                            </button> 
                     </div>
                 </form>
             </div>
