@@ -1,6 +1,6 @@
 import React from 'react';
 // import React, { useState, useEffect } from 'react';
-// import validation from './validation';
+import validation from './validation';
 
 const playerProfile = ({playerProfile}) => {
     // const  [values, setValues] = useState({
